@@ -6,14 +6,13 @@ const cors = require("cors");
 const connectToDB = require("./lib/db/connect");
 const router = require("./lib/routes/routes");
 const notFound = require("./lib/middleware/notFound");
-const errorHandler = require("./lib/middleware/errorHandler")
+const errorHandler = require("./lib/middleware/errorHandler");
 
+app.use(cors());
 app.use(express.json());
 app.use("/tasks", router);
 app.use(notFound);
-app.use(errorHandler)
-
-app.use(cors)
+app.use(errorHandler);
 
 const startApp = async () => {
   try {
